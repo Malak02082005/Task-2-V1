@@ -3,11 +3,18 @@ import {
   getAllReviews,
   getReview,
   createReview,
+  getTopMeals,
   getReviewSummary
 } from '../controllers/reviewController.js';
 
 const router = Router();
 
-// TODO: wire up the three routes in README.md section 2 and the summary route in section 3.
+// Static paths first so they are not captured by /:id
+router.get('/top', getTopMeals);
+router.get('/summary', getReviewSummary);
+
+router.get('/', getAllReviews);
+router.post('/', createReview);
+router.get('/:id', getReview);
 
 export default router;
